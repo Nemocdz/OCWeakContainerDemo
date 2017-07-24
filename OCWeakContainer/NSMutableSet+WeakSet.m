@@ -11,7 +11,7 @@
 @implementation NSMutableSet (WeakSet)
 
 + (instancetype)cdz_weakSet{
-    CFSetCallBacks callbacks = {0, NULL, NULL, CFCopyDescription, CFEqual};
+    CFSetCallBacks callbacks = {0, NULL, NULL, CFCopyDescription, CFEqual,CFHash};
     return (NSMutableSet *)CFBridgingRelease(CFSetCreateMutable(0, 0, &callbacks));
 }
 
