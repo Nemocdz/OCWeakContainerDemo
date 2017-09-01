@@ -8,12 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSMutableSet (WeakSet)
+@interface NSMutableSet<ObjectType>  (WeakSet)
 
-+ (instancetype)cdz_weakSet;
++ (instancetype)cf_weakSet;
+- (void)cf_addObject:(ObjectType)object;
 
-- (void)cdz_weakAddObject:(NSObject *)objcet;
-
-- (void)cdz_removeAllObjects;
+- (void)mrc_addObject:(ObjectType)object;
+- (void)mrc_removeAllObjects;
 
 @end
+
+

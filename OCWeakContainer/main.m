@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "NSMutableSet+WeakSet.h"
 
-
 #define logRetainCount(x) NSLog(@"objectReatinCount:%@",[(x) valueForKey:@"retainCount"])
 
 void func1() {
@@ -58,8 +57,8 @@ void func2() {
     [set addObject:object];
     logRetainCount(object);
     
-    NSMutableSet *weakSet = [NSMutableSet cdz_weakSet];
-    [weakSet addObject:object];
+    NSMutableSet *weakSet = [NSMutableSet cf_weakSet];
+    [weakSet cf_addObject:object];
     logRetainCount(object);
     
     NSLog(@"-------");
@@ -76,11 +75,12 @@ void func3() {
     [set addObject:object];
     logRetainCount(object);
     
+
     NSMutableSet *set_ = [NSMutableSet set];
-    [set_ cdz_weakAddObject:object];
+    [set_ mrc_addObject:object];
     logRetainCount(object);
-    [set_ cdz_removeAllObjects];
     
+    [set_ mrc_removeAllObjects];
     NSLog(@"-----");
 }
 
@@ -103,7 +103,7 @@ void func4() {
     NSLog(@"-------");
 }
 
-typedef id(^CDZWeakObjectBlock)();
+typedef id(^CDZWeakObjectBlock)(void);
 
 CDZWeakObjectBlock blockOfObjcet (id object) {
     __weak id weakObjcet = object;
@@ -131,11 +131,9 @@ void func5() {
     logRetainCount(object);
     NSLog(@"%@",object);
     
-    
     NSMutableArray *array = [NSMutableArray array];
     [array addObject:object];
     logRetainCount(object);
-    
     
     CDZWeakObjectBlock block = blockOfObjcet(object);
     NSLog(@"%@",objectOfBlock(block));
@@ -147,11 +145,6 @@ void func5() {
 
 
 
-
-
-
-
-
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         func1();
@@ -159,6 +152,7 @@ int main(int argc, const char * argv[]) {
         func3();
         func4();
         func5();
+    
         NSLog(@"Hello, World!");
     }
     return 0;
